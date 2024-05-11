@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #gameQuestion {
+            place-content: center;
+            font-size: 26px;
+            text-shadow: none;
+        }
+        #image {
+            height: 80px;
+            width: 80px;
+            cursor:not-allowed;
+        }     
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome to your typing adventure!</h1>
+        <div id="interactiveBox">
+            <h2 id="startTypingHere">Start typing here</h2>
+            <h3 id="result"></h3>
+        </div>
+        <img src="/images/heart.png" id="image">
+        <div id="gameQuestion">
+            <p>What shape is this?</p>
+        </div>
+    </div>
+
+    <script>
+        let body = document.getElementsByTagName("body")[0];
+        let startTypingHere = document.getElementById("startTypingHere");
+        let result = document.getElementById("result");
+        let gameQuestion = document.getElementById("gameQuestion");
+        let container = document.getElementById("container");
+        let sequence = 0;
+        nextButton = undefined;
+        //what color am I?
+        function typingHeart() {
+            const keydownHandler = (e) => { //function to remove event
+                if (e.key === "h" && sequence === 0) {
+                    result.innerHTML = ""
+                    startTypingHere.innerHTML = "H";
+                    sequence += 1;
+                    console.log(e.key);
+                } else if (e.key === "e" && sequence === 1) {
+                    startTypingHere.innerHTML = "He";
+                    sequence += 1;
+                    console.log(e.key);
+                } else if (e.key === "a" && sequence === 2) {
+                    startTypingHere.innerHTML = "Hea";
+                    sequence += 1;
+                    console.log(e.key);            
+                } else if (e.key === "r" && sequence === 3){
+                    startTypingHere.innerHTML = "Hear";
+                    sequence += 1;
+                    console.log(e.key);
+                } else if (e.key === "t" && sequence === 4) {
+                    startTypingHere.innerHTML = "Heart";
+                    console.log(e.key);
+                    result.innerHTML = "That is correct!";
+                    nextButton = document.createElement("button");
+                    nextButton.id = "nextButton";
+                    nextButton.innerHTML = "Next";
+                    nextButton.onclick = () => {
+                        window.location.href = "shapeq2.html";
+                    };            
+                    container.appendChild(nextButton);
+                    body.removeEventListener("keydown", keydownHandler); // Remove the event listener
+                } else {
+                    result.innerHTML = "Try again!"
+                    startTypingHere.innerHTML = "";
+                    console.log(e.key)
+                    sequence = 0;
+                }
+            };
+
+            body.addEventListener("keydown", keydownHandler);
+        };
+
+        typingHeart();
+    </script>
+</body>
+</html>
