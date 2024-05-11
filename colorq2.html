@@ -33,62 +33,12 @@
     </div>
 
 
+    <script src="script.js"></script>
     <script>
-        let body = document.getElementsByTagName("body")[0];
-        let startTypingHere = document.getElementById("startTypingHere");
-        let result = document.getElementById("result");
-        let gameQuestion = document.getElementById("gameQuestion");
-        let container = document.getElementById("container");
-        let sequence = 0;
-        nextButton = undefined;
-        //what color am I?
-        function typingYellow() {
-            const keydownHandler = (e) => { //function to remove event
-                if (e.key === "y" && sequence === 0) {
-                    result.innerHTML = ""
-                    startTypingHere.innerHTML = "Y";
-                    sequence += 1;
-                    console.log(e.key);
-                } else if (e.key === "e" && sequence === 1) {
-                    startTypingHere.innerHTML = "Ye";
-                    sequence += 1;
-                    console.log(e.key);
-                } else if (e.key === "l" && sequence === 2) {
-                    startTypingHere.innerHTML = "Yel";
-                    sequence += 1;
-                    console.log(e.key);            
-                } else if (e.key === "l" && sequence === 3){
-                    startTypingHere.innerHTML = "Yell";
-                    sequence += 1;
-                    console.log(e.key);
-                } else if (e.key === "o" && sequence === 4) {
-                    startTypingHere.innerHTML = "Yello";
-                    sequence += 1;
-                    console.log(e.key);
-                } else if (e.key === "w" && sequence === 5){
-                    startTypingHere.innerHTML = "Yellow";
-                    console.log(e.key);
-                    result.innerHTML = "That is correct!";
-                    nextButton = document.createElement("button");
-                    nextButton.id = "nextButton";
-                    nextButton.innerHTML = "Next";
-                    nextButton.onclick = () => {
-                        window.location.href = "shapeq1.html";
-                    };            
-                    container.appendChild(nextButton);
-                    body.removeEventListener("keydown", keydownHandler); // Remove the event listener
-                } else {
-                    result.innerHTML = "Try again!"
-                    startTypingHere.innerHTML = "";
-                    console.log(e.key)
-                    sequence = 0;
-                }
-            };
-
-            body.addEventListener("keydown", keydownHandler);
-        };
-
-        typingYellow();
+        // Use DOMContentLoaded event listener to execute function after script.js is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            typingYellow();
+        });
     </script>
 </body>
 </html>
