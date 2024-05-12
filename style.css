@@ -29,7 +29,6 @@ body {
     font-size: 30px;
 }
 #interactiveBox {
-    border-bottom: 3px solid black;
     line-height: 70px;
 }
 #nextButton {
@@ -37,4 +36,13 @@ body {
     background: transparent;
     width: 120px;
     height: 50px;
+    margin-bottom: 50px;
+}
+#startTypingHere {
+    margin-bottom: 90px;
+    margin-top: 20px;
+    text-decoration: underline;
+}
+#result {
+    color: rgb(68, 7, 85);
 }
